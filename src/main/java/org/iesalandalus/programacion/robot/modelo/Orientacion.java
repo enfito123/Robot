@@ -9,4 +9,15 @@ public enum Orientacion {
     SUROESTE ("Suroeste"),
     OESTE ("Oeste"),
     NOROESTE ("Noroeste");
+
+    public String mostrarOrientacion;
+
+    private Orientacion (String mostrarOrientacion) {
+        this.mostrarOrientacion = mostrarOrientacion;
+    }
+
+    @Override
+    public String toString() {
+        return mostrarOrientacion;
+    }
 }
