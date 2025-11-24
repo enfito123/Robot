@@ -1,33 +1,43 @@
 package org.iesalandalus.programacion.robot.modelo;
 
-import java.util.Objects;
-
-public record Zona (int ancho, int alto){
+public class Zona {
     public static final int ANCHO_MINIMO = 10;
     public static final int ANCHO_MAXIMO = 100;
     public static final int ALTO_MINIMO = 10;
     public static final int ALTO_MAXIMO = 100;
+    private final int ancho;
+    private final int alto;
 
-
-    public Zona {
-        validarAncho(ancho);
-        validarAlto(alto);
+    public Zona(int ancho, int alto) {
+        if (!validarAncho(ancho)) {
+            throw new IllegalArgumentException("Ancho no válido.");
+        }
+        if (!validarAlto(alto)) {
+            throw new IllegalArgumentException("Alto no válido.");
+        }
+        this.ancho = ancho;
+        this.alto = alto;
     }
 
     public Zona() {
-        this(ANCHO_MINIMO, ALTO_MINIMO);
+        this.ancho = ANCHO_MINIMO;
+        this.alto = ALTO_MINIMO;
     }
 
-    private void validarAlto(int alto) {
-        if (alto < ALTO_MINIMO || alto > ALTO_MAXIMO) {
-            throw new IllegalArgumentException("Alto no válido.");
-        }
+    public int ancho() {
+        return ancho;
     }
 
-    private void validarAncho(int ancho) {
-        if (ancho < ANCHO_MINIMO || ancho > ANCHO_MAXIMO) {
-            throw new IllegalArgumentException("Ancho no válido.");
-        }
+    public int alto() {
+        return alto;
+    }
+
+    private boolean validarAncho(int ancho) {
+        return ancho >= ANCHO_MINIMO && ancho <= ANCHO_MAXIMO;
+    }
+
+    private boolean validarAlto(int alto) {
+        return alto >= ALTO_MINIMO && alto <= ALTO_MAXIMO;
     }
 
     public Coordenada getCentro() {
@@ -35,8 +45,11 @@ public record Zona (int ancho, int alto){
     }
 
     public boolean pertenece(Coordenada coordenada) {
-        Objects.requireNonNull(coordenada, "La coordenada no puede ser nula.");
-        return perteneceX(coordenada.x()) && perteneceY(coordenada.y());
+        if (coordenada == null) {
+            throw new NullPointerException("La coordenada no puede ser nula.");
+        }
+        return coordenada.x() >= 0 && coordenada.x() < ancho &&
+                coordenada.y() >= 0 && coordenada.y() < alto;
     }
 
     private boolean perteneceX(int x) {
@@ -46,5 +59,4 @@ public record Zona (int ancho, int alto){
     private boolean perteneceY(int y) {
         return y >= 0 && y < alto;
     }
-
 }

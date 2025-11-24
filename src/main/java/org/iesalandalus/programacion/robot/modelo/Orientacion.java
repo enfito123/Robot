@@ -10,7 +10,7 @@ public enum Orientacion {
     OESTE ("Oeste"),
     NOROESTE ("Noroeste");
 
-    public String mostrarOrientacion;
+    private String mostrarOrientacion;
 
     private Orientacion (String mostrarOrientacion) {
         this.mostrarOrientacion = mostrarOrientacion;
