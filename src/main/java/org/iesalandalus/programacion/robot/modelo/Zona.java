@@ -59,4 +59,9 @@ public class Zona {
     private boolean perteneceY(int y) {
         return y >= 0 && y < alto;
     }
+
+    @Override
+    public String toString() {
+        return "Zona[ancho=" + ancho + ", alto=" + alto + "]";
+    }
 }

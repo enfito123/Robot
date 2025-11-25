@@ -17,11 +17,11 @@ public class ControladorRobot {
     public void ejecutar(char comando) {
         char comandoMayuscula = Character.toUpperCase(comando);
         
-        if (comandoMayuscula == 'A') {
+        if (comandoMayuscula == 'W') {
             robot.avanzar();
         } else if (comandoMayuscula == 'D') {
             robot.girarALaDerecha();
-        } else if (comandoMayuscula == 'I') {
+        } else if (comandoMayuscula == 'A') {
             robot.girarALaIzquierda();
         } else {
             throw new IllegalArgumentException("Comando desconocido: " + comando);

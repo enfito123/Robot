@@ -14,11 +14,11 @@ public class Consola {
     public static void mostrarMenuPrincipal() {
         System.out.println("MENÚ PRINCIPAL");
         System.out.println("--------------");
-        System.out.println("1. Controlar robot por defecto");
-        System.out.println("2. Controlar robot indicando zona");
-        System.out.println("3. Controlar robot indicando zona y orientación");
-        System.out.println("4. Controlar robot indicando zona, orientación y coordenada");
-        System.out.println("5. Ejecutar comando");
+        System.out.println("1. Crear robot por defecto");
+        System.out.println("2. Crear robot indicando zona");
+        System.out.println("3. Crear robot indicando zona y orientación");
+        System.out.println("4. Crear robot indicando zona, orientación y coordenada");
+        System.out.println("5. Controlar robot");
         System.out.println("6. Salir");
     }
 
@@ -97,7 +97,6 @@ public class Consola {
     }
 
     public static char elegirComando() {
-        System.out.print("Introduce el comando a ejecutar (A/D/I): ");
         return Entrada.caracter();
     }
 
@@ -110,6 +109,6 @@ public class Consola {
     }
 
     public static void despedirse() {
-        System.out.println("¡Hasta luego! Gracias por usar el simulador de robot.");
+        System.out.println("¡Hasta luego!");
     }
 }
